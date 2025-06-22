@@ -95,6 +95,10 @@ main .autoBtnGroup li:hover {
   transform: scale(1.4);
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 #btnPrev {
   top: 50%;
   left: 2%;

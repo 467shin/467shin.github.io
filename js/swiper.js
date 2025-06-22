@@ -56,13 +56,18 @@ export const swiper = () => {
 
   // 다음 버튼
   btnNext.addEventListener("click", () => {
-    now++;
-    carouselSlide(now, 0.5);
+    if (now <= slideList.length) {
+      now++;
+      carouselSlide(now, 0.5);
+    }
     // 마지막 슬라이드에서 다음으로 갈 경우
     if (now > slideList.length) {
+      // 좀 스파게티이긴 한데 중복클릭 방지용
+      btnNext.classList.add("disabled");
       setTimeout(() => {
         now = 1;
         carouselSlide(now, 0);
+        btnNext.classList.remove("disabled");
       }, 500);
     }
   });
