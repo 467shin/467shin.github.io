@@ -80,3 +80,4 @@ CSS를 잘 다루는 프론트엔드 개발자가 진짜 명품 개발자이다.
 
 - [Do it! 인터랙티브 웹 페이지 만들기 시리즈](https://youtu.be/y69NW0r9k0Q?si=DWaf7ebRSwccopoG)
 - [[JS/Slider] 바닐라 자바스크립트로 무한 루프 슬라이드(Carousel) 구현하기](https://im-developer.tistory.com/97)
+- [[JavaScript] JS파일 분리해서 쓰기 (모듈)](https://doishalf.tistory.com/47)

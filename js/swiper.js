@@ -11,17 +11,15 @@ export const swiper = () => {
   console.log(size, -size * now);
 
   prevBtn.addEventListener("click", () => {
-    console.log(now);
-
     now--;
+    console.log(now);
     wrapper.style.transform = `translateX(-${size * (now - 1)}px)`;
     console.log(size, -size * now);
   });
 
   nextBtn.addEventListener("click", () => {
-    console.log(now);
-
     now++;
+    console.log(now);
     wrapper.style.transform = `translateX(-${size * (now - 1)}px)`;
     console.log(size, -size * now);
   });

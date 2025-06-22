@@ -1,3 +1,3 @@
-import { swiper } from "./swiper";
+import { swiper } from "./swiper.js";
 
 swiper();
