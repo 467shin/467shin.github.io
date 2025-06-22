@@ -61,7 +61,7 @@ main .autoBtnGroup li:hover {
 }
 
 .wrapper {
-  width: 400vw;
+  width: 700vw;
   height: 100%;
   box-sizing: border-box;
 }
@@ -97,11 +97,11 @@ main .autoBtnGroup li:hover {
 
 #btnPrev {
   top: 50%;
-  left: 0;
+  left: 2%;
 }
 
 #btnNext {
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 2%;
 }
