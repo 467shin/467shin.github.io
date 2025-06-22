@@ -21,7 +21,7 @@ main {
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
-  background: linear-gradient(45deg, violet, lavender);
+  background: linear-gradient(45deg, plum, lavender);
 }
 
 main h1 {
@@ -36,7 +36,7 @@ main h1 {
 
 main .autoBtnGroup {
   position: absolute;
-  bottom: 3%;
+  bottom: 5%;
   margin: 0 3%;
 }
 
@@ -45,4 +45,57 @@ main .autoBtnGroup li {
   margin-right: 20px;
   cursor: pointer;
   color: white;
+  opacity: 0.9;
+  transition: all, 0.3s;
+}
+main .autoBtnGroup li:hover {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+.container {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+}
+
+.wrapper {
+  width: 400vw;
+  height: 100%;
+}
+
+.container .slide {
+  width: 100vw;
+  height: 70%;
+  float: left;
+  position: relative;
+  top: 15%;
+}
+
+.container .slide img {
+  width: 70%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.container i {
+  position: absolute;
+  cursor: pointer;
+  color: white;
+  opacity: 0.8;
+  font-size: 2rem;
+  margin: 1%;
+}
+
+#prevBtn {
+  top: 50%;
+  left: 0;
+}
+
+#nextBtn {
+  position: absolute;
+  top: 50%;
+  right: 0;
 }

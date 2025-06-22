@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/aca4f84dd2.js" crossorigin="anonymous"></script>
     <!-- ▲ 외부 CDN -->
+    <script defer src="js/index.js" type="module"></script>
   </head>
   <body>
     <main>
@@ -31,6 +32,32 @@
           <i class="fas fa-pause"></i>
         </li>
       </ul>
+
+      <!-- Carousel -->
+      <div class="container">
+        <div class="wrapper">
+          <div class="slide">
+            <img src="static/pic1.jpeg" alt="" />
+          </div>
+          <div class="slide">
+            <div class="slide">
+              <img src="static/pic2.jpeg" alt="" />
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide">
+              <img src="static/pic3.jpeg" alt="" />
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide">
+              <img src="static/pic4.jpeg" alt="" />
+            </div>
+          </div>
+        </div>
+        <i id="prevBtn" class="fas fa-caret-left"></i>
+        <i id="nextBtn" class="fas fa-caret-right"></i>
+      </div>
     </main>
   </body>
 </html>

@@ -65,13 +65,18 @@ CSS를 잘 다루는 프론트엔드 개발자가 진짜 명품 개발자이다.
 6. `box-sizing: border-box`속성은 padding값을 요소 내부로 흡수시킨다.(너비/높이가 안바뀜)
 7. `flex-flow`속성으로 `flex-direction`, `flex-wrap`을 한꺼번에 지정할 수 있다.
 8. `inline-block`은 `inline`이지만 `block`요소처럼 높이값과 같은 속성을 가질 수 있다.
+9. `top`, `bottom`, `left`, `right`속성을 사용하기 위해서는 `position:relative`를 걸어두어야 한다.
+   - 항상 `flex`나 `grid`로만 위치를 맞춰서 몰랐다...
 
 ## 5. 아이디어 및 참고자료
 
 ### 아이디어
 
-1. JSON 형식으로 글을 작성하고 `resources`폴더 안에 배치하여 이를 불러온다.
+1. 전체 프로젝트
+   - JSON 형식으로 글을 작성하고 `resources`폴더 안에 배치하여 이를 불러온다.
+   - 되도록 라이브러리를 사용하지 않고 직접 구현해본다.
 
 ### 참고자료
 
 - [Do it! 인터랙티브 웹 페이지 만들기 시리즈](https://youtu.be/y69NW0r9k0Q?si=DWaf7ebRSwccopoG)
+- [[JS/Slider] 바닐라 자바스크립트로 무한 루프 슬라이드(Carousel) 구현하기](https://im-developer.tistory.com/97)
