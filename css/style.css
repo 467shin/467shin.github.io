@@ -55,21 +55,21 @@ main .autoBtnGroup li:hover {
 
 .container {
   width: 100vw;
-  height: 100%;
+  height: 70%;
   position: relative;
+  top: 15%;
 }
 
 .wrapper {
   width: 400vw;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .container .slide {
   width: 100vw;
-  height: 70%;
+  height: 100%;
   float: left;
-  position: relative;
-  top: 15%;
 }
 
 .container .slide img {
@@ -87,14 +87,20 @@ main .autoBtnGroup li:hover {
   opacity: 0.8;
   font-size: 2rem;
   margin: 1%;
+  transition: all, 0.3s;
 }
 
-#prevBtn {
+.container i:hover {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+#btnPrev {
   top: 50%;
   left: 0;
 }
 
-#nextBtn {
+#btnNext {
   position: absolute;
   top: 50%;
   right: 0;
