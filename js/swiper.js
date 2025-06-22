@@ -39,18 +39,24 @@ export const swiper = () => {
   const carouselSlide = (now, speed) => {
     wrapper.style.transition = `${speed}s`;
     wrapper.style.transform = `translateX(-${size * now}px)`;
+    btnPrev.classList.remove("disabled");
+    btnNext.classList.remove("disabled");
   };
 
   // 이전 버튼
   btnPrev.addEventListener("click", () => {
-    now--;
-    carouselSlide(now, 0.5);
+    if (now > 0) {
+      now--;
+      carouselSlide(now, 0.5);
+    }
     // 첫 슬라이드에서 이전으로 갈 경우
     if (now === 0) {
+      // 좀 스파게티이긴 한데 중복클릭 방지용
+      btnPrev.classList.add("disabled");
       setTimeout(() => {
         now = slideList.length;
         carouselSlide(now, 0);
-      }, 450);
+      }, 500);
     }
   });
 
@@ -67,7 +73,6 @@ export const swiper = () => {
       setTimeout(() => {
         now = 1;
         carouselSlide(now, 0);
-        btnNext.classList.remove("disabled");
       }, 500);
     }
   });

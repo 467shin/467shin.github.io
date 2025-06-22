@@ -96,6 +96,8 @@ main .autoBtnGroup li:hover {
 }
 
 .disabled {
+  opacity: 1;
+  transform: scale(1.4);
   pointer-events: none;
 }
 
