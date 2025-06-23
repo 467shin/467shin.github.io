@@ -108,7 +108,6 @@ export const carousel = () => {
   // 터치
   const touchStart = (e) => {
     start = e.touches[0].clientX;
-    console.log(start);
   };
 
   const touchEnd = (e) => {
