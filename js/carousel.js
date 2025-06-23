@@ -70,13 +70,12 @@ export const carousel = () => {
   let start;
   let moveX;
   const onMove = (e) => {
+    e.preventDefault();
     // mouse : touch
     const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
     moveX = clientX - start;
-    wrapper.style.transition = e.clientX ? `450ms` : `0s`;
+    wrapper.style.transition = e.clientX ? `450ms` : `0ms`;
     wrapper.style.transform = `translateX(-${size * now - moveX}px)`;
-
-    console.log(moveX);
   };
 
   // 마우스
