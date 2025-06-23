@@ -104,8 +104,8 @@ export const carousel = () => {
         now--;
       }
       carouselSlide(moveAction, 450);
+      swipeInit();
     };
-    swipeInit();
   };
 
   // 터치
@@ -127,7 +127,7 @@ export const carousel = () => {
     carouselSlide(moveAction, 300);
 
     // 초기화
-    swipeInit;
+    swipeInit();
   };
 
   wrapper.addEventListener("touchstart", touchStart);
