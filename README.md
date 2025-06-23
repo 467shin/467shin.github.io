@@ -78,6 +78,7 @@ CSS를 잘 다루는 프론트엔드 개발자가 진짜 명품 개발자이다.
 
 ### 참고자료
 
-- [Do it! 인터랙티브 웹 페이지 만들기 시리즈](https://youtu.be/y69NW0r9k0Q?si=DWaf7ebRSwccopoG)
-- [[JS/Slider] 바닐라 자바스크립트로 무한 루프 슬라이드(Carousel) 구현하기](https://im-developer.tistory.com/97)
-- [[JavaScript] JS파일 분리해서 쓰기 (모듈)](https://doishalf.tistory.com/47)
+- [디자인 - Do it! 인터랙티브 웹 페이지 만들기 시리즈](https://youtu.be/y69NW0r9k0Q?si=DWaf7ebRSwccopoG)
+- [JavaScript 모듈화 - [JavaScript] JS파일 분리해서 쓰기 (모듈)](https://doishalf.tistory.com/47)
+- [무한 루프 캐러셀 - [JS/Slider] 바닐라 자바스크립트로 무한 루프 슬라이드(Carousel) 구현하기](https://im-developer.tistory.com/97)
+- [드래그로 스와이핑 - carousel slider 만들기 (with js)](https://mong-blog.tistory.com/entry/carousel-slider-%EB%A7%8C%EB%93%A4%EA%B8%B0-with-js)

@@ -1,3 +1,3 @@
-import { swiper } from "./swiper.js";
+import { carousel } from "./carousel.js";
 
-swiper();
+carousel();
