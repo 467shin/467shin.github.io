@@ -73,7 +73,7 @@ export const carousel = () => {
     // mouse : touch
     const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
     moveX = clientX - start;
-    wrapper.style.transition = `450ms`;
+    wrapper.style.transition = e.clientX ? `450ms` : `0s`;
     wrapper.style.transform = `translateX(-${size * now - moveX}px)`;
 
     console.log(moveX);
@@ -121,7 +121,7 @@ export const carousel = () => {
       moveAction = false;
       now--;
     }
-    carouselSlide(moveAction, 0);
+    carouselSlide(moveAction, 300);
   };
 
   wrapper.addEventListener("touchstart", touchStart);
