@@ -68,6 +68,8 @@ main .autoBtnGroup li:hover {
   width: 700vw;
   height: 100%;
   box-sizing: border-box;
+  -ms-touch-action: manipulation; /* IE10  */
+  touch-action: manipulation; /* IE11+ */
 }
 
 .container .slide {

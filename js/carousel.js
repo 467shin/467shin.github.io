@@ -70,6 +70,7 @@ export const carousel = () => {
   let start;
   let moveX;
   const onMove = (e) => {
+    // 터치시 화면이 덜덜 떨려요
     e.preventDefault();
     // mouse : touch
     const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
