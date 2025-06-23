@@ -121,7 +121,7 @@ export const carousel = () => {
       moveAction = false;
       now--;
     }
-    carouselSlide(moveAction, 300);
+    carouselSlide(moveAction, 0);
   };
 
   wrapper.addEventListener("touchstart", touchStart);
