@@ -69,35 +69,63 @@ export const carousel = () => {
   /** 스와이프 기능 */
   let start;
   let moveX;
-  const onMouseMove = (e) => {
-    moveX = e.clientX - start;
+  const onMove = (e) => {
+    // mouse : touch
+    const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
+    moveX = clientX - start;
+    wrapper.style.transition = `450ms`;
     wrapper.style.transform = `translateX(-${size * now - moveX}px)`;
+
+    console.log(moveX);
   };
 
+  // 마우스
   wrapper.onmousedown = (e) => {
     // 초기화
     start = 0;
     moveX = 0;
     start = e.clientX;
-    wrapper.addEventListener("mousemove", onMouseMove);
+    wrapper.addEventListener("mousemove", onMove);
     document.onmouseup = (e) => {
-      wrapper.removeEventListener("mousemove", onMouseMove);
+      wrapper.removeEventListener("mousemove", onMove);
       document.onmouseup = null;
 
-      // 버튼 클릭을 핸들링
+      // 버튼 클릭 핸들링
       if (!moveX) return;
 
-      console.log("통과");
-
       let moveAction;
-      if (moveX < -size / 3) {
+      if (moveX < -size / 5) {
         moveAction = true;
         now++;
-      } else if (moveX > size / 3) {
+      } else if (moveX > size / 5) {
         moveAction = false;
         now--;
       }
       carouselSlide(moveAction, 450);
     };
   };
+
+  // 터치
+  const touchStart = (e) => {
+    start = e.touches[0].clientX;
+    console.log(start);
+  };
+
+  const touchEnd = (e) => {
+    // 버튼 클릭 핸들링
+    if (!moveX) return;
+    let moveAction;
+    if (moveX < -size / 5) {
+      moveAction = true;
+      now++;
+    } else if (moveX > size / 5) {
+      moveAction = false;
+      now--;
+    }
+    carouselSlide(moveAction, 300);
+  };
+
+  wrapper.addEventListener("touchstart", touchStart);
+  wrapper.addEventListener("touchmove", onMove);
+  document.addEventListener("touchend", touchEnd);
 };
