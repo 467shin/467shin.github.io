@@ -69,6 +69,11 @@ export const carousel = () => {
   /** 스와이프 기능 */
   let start;
   let moveX;
+  const swipeInit = () => {
+    start = 0;
+    moveX = 0;
+  };
+  // 터치 및 드래그 제어
   const onMove = (e) => {
     // 터치시 화면이 덜덜 떨려요
     e.preventDefault();
@@ -81,9 +86,6 @@ export const carousel = () => {
 
   // 마우스
   wrapper.onmousedown = (e) => {
-    // 초기화
-    start = 0;
-    moveX = 0;
     start = e.clientX;
     wrapper.addEventListener("mousemove", onMove);
     document.onmouseup = (e) => {
@@ -103,6 +105,7 @@ export const carousel = () => {
       }
       carouselSlide(moveAction, 450);
     };
+    swipeInit();
   };
 
   // 터치
@@ -122,6 +125,9 @@ export const carousel = () => {
       now--;
     }
     carouselSlide(moveAction, 300);
+
+    // 초기화
+    swipeInit;
   };
 
   wrapper.addEventListener("touchstart", touchStart);
