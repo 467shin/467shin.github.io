@@ -1,9 +1,12 @@
 export const carousel = () => {
+  // 캐러셀 컨테이너 선택자
   const container = document.querySelector(".container");
   // 캐러셀 래퍼 선택자
   const wrapper = document.querySelector(".wrapper");
   // 캐러셀 슬라이드 리스트 선택자
   const slideList = document.querySelectorAll(".slide");
+  // 캐러셀 페이지 선택자
+  const pagination = document.querySelector("#pagination span");
 
   // 화면너비
   let winSize;
@@ -11,6 +14,8 @@ export const carousel = () => {
   let slideSize;
   // 캐러셀의 현재 위치
   let now = 2;
+  // 페이지네이션 공식
+  const page = () => ((now + 2) % slideList.length) + 1;
 
   // 캐러셀 초기화 함수
   const carouselInitialize = () => {
@@ -46,6 +51,9 @@ export const carousel = () => {
 
   /** 캐러셀을 돌려요 */
   const carouselSlide = (action, speed) => {
+    // 페이지네이션
+    pagination.innerText = page();
+    // 슬라이드
     wrapper.style.transition = `${speed}ms`;
     wrapper.style.transform = `translateX(-${location()}px)`;
     // 단순 이동 제어

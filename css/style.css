@@ -38,6 +38,21 @@ main h1 {
   margin: 3vh 3%;
 }
 
+main h2 {
+  font-weight: normal;
+  font-size: 1rem;
+  font-family: "Orbit";
+  color: white;
+  opacity: 0.8;
+  position: absolute;
+  right: 5%;
+  margin: 5vh 0;
+}
+
+#pagination span {
+  font-size: 1.5rem;
+}
+
 main .autoBtnGroup {
   position: absolute;
   bottom: 5%;
