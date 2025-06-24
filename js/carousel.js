@@ -1,66 +1,77 @@
 export const carousel = () => {
-  // 캐러셀 래퍼 선택
+  const container = document.querySelector(".container");
+  // 캐러셀 래퍼 선택자
   const wrapper = document.querySelector(".wrapper");
-  // 캐러셀 슬라이드 리스트 선택
+  // 캐러셀 슬라이드 리스트 선택자
   const slideList = document.querySelectorAll(".slide");
 
+  // 화면너비
+  let winSize;
   // 슬라이드의 사이즈
-  let size;
+  let slideSize;
   // 캐러셀의 현재 위치
-  let now = 1;
+  let now = 2;
 
   // 캐러셀 초기화 함수
   const carouselInitialize = () => {
     // 화면 크기의 변화를 감지하여 캐러셀 사이즈 및 위치 재설정
-    size = slideList[0].clientWidth;
-    wrapper.style.transition = "none";
-    wrapper.style.transform = `translateX(-${size * now}px)`;
+    slideSize = slideList[0].clientWidth;
+    winSize = container.clientWidth;
+
+    carouselSlide(null, 0);
   };
   window.addEventListener("resize", carouselInitialize);
   window.addEventListener("load", carouselInitialize);
 
   // 무한루프를 위한 작업
   let firstChild = wrapper.firstElementChild;
-  let secondChild = wrapper.children[1];
   let lastChild = wrapper.lastElementChild;
   let clonedFirst = firstChild.cloneNode(true);
-  let clonedSecond = secondChild.cloneNode(true);
+  let clonedSecond = wrapper.children[1].cloneNode(true);
+  let clonedThird = wrapper.children[2].cloneNode(true);
   let clonedLast = lastChild.cloneNode(true);
 
   wrapper.append(clonedFirst, clonedSecond);
   wrapper.insertBefore(clonedLast, firstChild);
+  wrapper.insertBefore(clonedThird, clonedLast);
 
   // 이전 다음 버튼 선택
   const btnPrev = document.querySelector("#btnPrev");
   const btnNext = document.querySelector("#btnNext");
 
+  // 슬라이드 위치 구하기(중간정렬)
+  const location = () => {
+    return slideSize * now - (winSize - slideSize) / 2;
+  };
+
   /** 캐러셀을 돌려요 */
   const carouselSlide = (action, speed) => {
     wrapper.style.transition = `${speed}ms`;
-    wrapper.style.transform = `translateX(-${size * now}px)`;
-
+    wrapper.style.transform = `translateX(-${location()}px)`;
+    // 단순 이동 제어
+    if (!speed) return;
     // UX를 위한 캐러셀 회전 딜레이 제어
     const targetBtn = action ? btnNext : btnPrev;
     targetBtn.classList.add("disabled");
     setTimeout(() => {
       // 루프 제어
-      if (now === 0 || now > slideList.length) {
+      if (now === 1 || now > slideList.length + 1) {
         // 캐러셀 위치 초기화
-        now = action ? 1 : slideList.length;
+        now = action ? 2 : slideList.length + 1;
         wrapper.style.transition = `0ms`;
-        wrapper.style.transform = `translateX(-${size * now}px)`;
+        wrapper.style.transform = `translateX(-${location()}px)`;
       }
       targetBtn.classList.remove("disabled");
     }, speed);
   };
 
-  /** 이전 버튼 */
+  /** 이전 버튼 클릭 */
   btnPrev.addEventListener("click", () => {
     now--;
     carouselSlide(false, 450);
   });
 
-  /** 다음 버튼 */
+  /** 다음 버튼 클릭 */
   btnNext.addEventListener("click", () => {
     now++;
     carouselSlide(true, 450);
@@ -81,7 +92,7 @@ export const carousel = () => {
     const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
     moveX = clientX - start;
     wrapper.style.transition = e.clientX ? `450ms` : `0ms`;
-    wrapper.style.transform = `translateX(-${size * now - moveX}px)`;
+    wrapper.style.transform = `translateX(-${location() - moveX}px)`;
   };
 
   // 마우스
@@ -96,14 +107,15 @@ export const carousel = () => {
       if (!moveX) return;
 
       let moveAction;
-      if (moveX < -size / 5) {
+      if (moveX < -slideSize / 5) {
         moveAction = true;
         now++;
-      } else if (moveX > size / 5) {
+      } else if (moveX > slideSize / 5) {
         moveAction = false;
         now--;
       }
       carouselSlide(moveAction, 450);
+      // 초기화
       swipeInit();
     };
   };
@@ -117,15 +129,14 @@ export const carousel = () => {
     // 버튼 클릭 핸들링
     if (!moveX) return;
     let moveAction;
-    if (moveX < -size / 5) {
+    if (moveX < -slideSize / 5) {
       moveAction = true;
       now++;
-    } else if (moveX > size / 5) {
+    } else if (moveX > slideSize / 5) {
       moveAction = false;
       now--;
     }
     carouselSlide(moveAction, 300);
-
     // 초기화
     swipeInit();
   };
