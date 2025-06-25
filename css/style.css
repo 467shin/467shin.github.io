@@ -102,7 +102,7 @@ main .autoBtnGroup li:hover {
   margin: 0 auto;
   object-fit: contain;
   opacity: 0.5;
-  transition: 100ms;
+  transition: 170ms;
 }
 
 /* 선택 효과 설정 */
@@ -110,12 +110,12 @@ main .autoBtnGroup li:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate3D(-50%, -50%, 1.7vh);
+  transform: translate3D(-50%, -50%, 1vh);
   opacity: 0;
   background-color: #fff;
 }
 .selected .select-effect {
-  animation: select-animation 300ms ease 2;
+  animation: select-animation 300ms ease 250ms 2;
 }
 .selected {
   z-index: 1;
