@@ -107,7 +107,7 @@ main .autoBtnGroup li:hover {
 .selected {
   z-index: 1;
   img {
-    filter: drop-shadow(0 1px 10px);
+    filter: drop-shadow(0 10px 17px);
     transform: translateZ(2vh);
   }
 }
