@@ -25,6 +25,14 @@ export const carousel = () => {
     slideSize = slideList[0].clientWidth;
     winSize = container.clientWidth;
 
+    // 이펙트 크기를 재설정
+    slideList.forEach((slide) => {
+      const img = slide.querySelector("img");
+      const effect = slide.querySelector(".select-effect");
+
+      effect.style.width = `${img.width}px`;
+      effect.style.height = `${(img.width * img.naturalHeight) / img.naturalWidth}px`;
+    });
     carouselSlide("init", 0);
   };
   window.addEventListener("resize", carouselInitialize);
@@ -145,10 +153,10 @@ export const carousel = () => {
     // 버튼 클릭 핸들링
     if (!moveX) return;
     let moveAction;
-    if (moveX < -slideSize / 5) {
+    if (moveX < -slideSize / 7) {
       moveAction = true;
       now++;
-    } else if (moveX > slideSize / 5) {
+    } else if (moveX > slideSize / 7) {
       moveAction = false;
       now--;
     }
