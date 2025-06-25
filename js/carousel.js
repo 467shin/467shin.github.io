@@ -104,8 +104,10 @@ export const carousel = () => {
     e.preventDefault();
     // mouse : touch
     const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
-    moveX = clientX - start;
-    wrapper.style.transition = `${speed}ms`;
+    // 터치일 경우 약간의 감도 조절
+    moveX = e.clientX ? clientX - start : ((clientX - start) / 5) * 3;
+    // 터치 이벤트에 transition을 주어도 덜덜 떨려요
+    wrapper.style.transition = e.clientX ? `${speed}ms` : `0ms`;
     wrapper.style.transform = `translateX(-${location() - moveX}px)`;
   };
 
