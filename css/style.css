@@ -74,6 +74,7 @@ main .autoBtnGroup li:hover {
   transform: scale(1.4);
 }
 
+/* 캐러셀 */
 .container {
   width: 100vw;
   height: 60%;
@@ -82,29 +83,33 @@ main .autoBtnGroup li:hover {
 }
 
 .wrapper {
-  width: 700vw;
+  width: 600vw;
   height: 100%;
 }
 
 .container .slide {
-  width: 60vw;
+  width: 80vw;
   height: 100%;
   float: left;
+  position: relative;
   perspective: 100px;
 }
 
 .container .slide img {
-  width: 80%;
+  width: 95%;
   height: 100%;
   display: block;
   margin: 0 auto;
-  object-fit: cover;
+  object-fit: contain;
   transition: 100ms;
 }
 
 .selected {
-  box-shadow: 0 1px 10px;
-  transform: translateZ(2vh);
+  z-index: 1;
+  img {
+    filter: drop-shadow(0 1px 10px);
+    transform: translateZ(2vh);
+  }
 }
 
 .container i {
@@ -130,11 +135,11 @@ main .autoBtnGroup li:hover {
 
 #btnPrev {
   top: 50%;
-  left: 2%;
+  left: 1%;
 }
 
 #btnNext {
   position: absolute;
   top: 50%;
-  right: 2%;
+  right: 1%;
 }

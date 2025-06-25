@@ -56,7 +56,7 @@ export const carousel = () => {
     // 이전 슬라이드의 인덱스
     const previousIndex = action ? page(now - 1) - 1 : page(now + 1) - 1;
     // 이전 슬라이드의 selected 클래스 삭제
-    slideList[previousIndex].querySelector("img").classList.remove("selected");
+    slideList[previousIndex].classList.remove("selected");
 
     // 페이지네이션
     pagination.innerText = currentSlide;
@@ -75,7 +75,7 @@ export const carousel = () => {
         wrapper.style.transform = `translateX(-${location()}px)`;
       }
       targetBtn.classList.remove("disabled");
-      slideList[currentSlide - 1].querySelector("img").classList.add("selected");
+      slideList[currentSlide - 1].classList.add("selected");
     }, speed);
   };
 
