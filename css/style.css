@@ -74,15 +74,14 @@ main .autoBtnGroup li:hover {
 
 .container {
   width: 100vw;
-  height: 70%;
+  height: 60%;
   position: relative;
-  top: 15%;
+  top: 20%;
 }
 
 .wrapper {
   width: 700vw;
   height: 100%;
-  box-sizing: border-box;
   -ms-touch-action: manipulation; /* IE10  */
   touch-action: manipulation; /* IE11+ */
 }
@@ -91,6 +90,7 @@ main .autoBtnGroup li:hover {
   width: 60vw;
   height: 100%;
   float: left;
+  perspective: 100px;
 }
 
 .container .slide img {
@@ -99,6 +99,12 @@ main .autoBtnGroup li:hover {
   display: block;
   margin: 0 auto;
   object-fit: cover;
+  transition: 300ms;
+}
+
+.selected {
+  box-shadow: 0 1px 10px;
+  transform: translateZ(2vh);
 }
 
 .container i {

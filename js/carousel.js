@@ -15,7 +15,7 @@ export const carousel = () => {
   // 캐러셀의 현재 위치
   let now = 2;
   // 페이지네이션 공식
-  const page = () => ((now + 2) % slideList.length) + 1;
+  const page = (now) => ((now + 2) % slideList.length) + 1;
 
   // 캐러셀 초기화 함수
   const carouselInitialize = () => {
@@ -23,7 +23,7 @@ export const carousel = () => {
     slideSize = slideList[0].clientWidth;
     winSize = container.clientWidth;
 
-    carouselSlide(null, 0);
+    carouselSlide("init", 0);
   };
   window.addEventListener("resize", carouselInitialize);
   window.addEventListener("load", carouselInitialize);
@@ -45,19 +45,22 @@ export const carousel = () => {
   const btnNext = document.querySelector("#btnNext");
 
   // 슬라이드 위치 구하기(중간정렬)
-  const location = () => {
-    return slideSize * now - (winSize - slideSize) / 2;
-  };
+  const location = () => slideSize * now - (winSize - slideSize) / 2;
 
   /** 캐러셀을 돌려요 */
   const carouselSlide = (action, speed) => {
+    // 현재 슬라이드
+    const currentSlide = page(now);
+    // 이전 슬라이드의 인덱스
+    const previousIndex = action ? page(now - 1) - 1 : page(now + 1) - 1;
+    // 이전 슬라이드의 selected 클래스 삭제
+    slideList[previousIndex].querySelector("img").classList.remove("selected");
+
     // 페이지네이션
-    pagination.innerText = page();
+    pagination.innerText = currentSlide;
     // 슬라이드
     wrapper.style.transition = `${speed}ms`;
     wrapper.style.transform = `translateX(-${location()}px)`;
-    // 단순 이동 제어
-    if (!speed) return;
     // UX를 위한 캐러셀 회전 딜레이 제어
     const targetBtn = action ? btnNext : btnPrev;
     targetBtn.classList.add("disabled");
@@ -70,6 +73,7 @@ export const carousel = () => {
         wrapper.style.transform = `translateX(-${location()}px)`;
       }
       targetBtn.classList.remove("disabled");
+      slideList[currentSlide - 1].querySelector("img").classList.add("selected");
     }, speed);
   };
 
