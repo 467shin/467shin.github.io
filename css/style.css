@@ -99,7 +99,7 @@ main .autoBtnGroup li:hover {
   display: block;
   margin: 0 auto;
   object-fit: cover;
-  transition: 300ms;
+  transition: 150ms;
 }
 
 .selected {
