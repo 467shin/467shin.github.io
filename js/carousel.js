@@ -14,6 +14,8 @@ export const carousel = () => {
   let slideSize;
   // 캐러셀의 현재 위치
   let now = 2;
+  // 캐러셀의 스피드
+  let speed = 300;
   // 페이지네이션 공식
   const page = (now) => ((now + 2) % slideList.length) + 1;
 
@@ -80,13 +82,13 @@ export const carousel = () => {
   /** 이전 버튼 클릭 */
   btnPrev.addEventListener("click", () => {
     now--;
-    carouselSlide(false, 450);
+    carouselSlide(false, speed);
   });
 
   /** 다음 버튼 클릭 */
   btnNext.addEventListener("click", () => {
     now++;
-    carouselSlide(true, 450);
+    carouselSlide(true, speed);
   });
 
   /** 스와이프 기능 */
@@ -103,7 +105,7 @@ export const carousel = () => {
     // mouse : touch
     const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
     moveX = clientX - start;
-    wrapper.style.transition = e.clientX ? `450ms` : `0ms`;
+    wrapper.style.transition = `${speed}ms`;
     wrapper.style.transform = `translateX(-${location() - moveX}px)`;
   };
 
@@ -126,7 +128,7 @@ export const carousel = () => {
         moveAction = false;
         now--;
       }
-      carouselSlide(moveAction, 450);
+      carouselSlide(moveAction, speed + 100);
       // 초기화
       swipeInit();
     };
@@ -148,7 +150,7 @@ export const carousel = () => {
       moveAction = false;
       now--;
     }
-    carouselSlide(moveAction, 300);
+    carouselSlide(moveAction, speed - 100);
     // 초기화
     swipeInit();
   };
