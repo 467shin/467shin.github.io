@@ -88,7 +88,7 @@ main .autoBtnGroup li:hover {
 }
 
 .container .slide {
-  width: 60vw;
+  width: 80vw;
   height: 100%;
   float: left;
   position: relative;
@@ -96,7 +96,7 @@ main .autoBtnGroup li:hover {
 }
 
 .container .slide img {
-  width: 80%;
+  width: 90%;
   height: 100%;
   display: block;
   margin: 0 auto;
@@ -110,7 +110,7 @@ main .autoBtnGroup li:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate3D(-50%, -50%, 1.7vh);
   opacity: 0;
   background-color: #fff;
 }
@@ -122,20 +122,20 @@ main .autoBtnGroup li:hover {
   img {
     opacity: 1 !important;
     filter: drop-shadow(0 0px 50px rgb(255, 255, 255, 0.8));
-    transform: translateZ(2vh);
+    transform: translateZ(1.7vh);
   }
 }
 @keyframes select-animation {
   0% {
     opacity: 0;
-    transform: translate3D(-50%, -50%, 0);
+    transform: translate3D(-50%, -50%, 1.7vh);
   }
   1% {
-    opacity: 1;
+    opacity: 0.7;
   }
   100% {
     opacity: 0;
-    transform: translate3D(-50%, -50%, 30px);
+    transform: translate3D(-50%, -50%, 1.7vh) scale(1.2);
   }
 }
 
