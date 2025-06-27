@@ -9,18 +9,22 @@ export const carousel = () => {
   // 캐러셀 페이지 선택자
   const pagination = document.querySelector("#pagination span");
 
-  // 화면너비
+  /** 화면너비 */
   let winSize;
-  // 슬라이드의 사이즈
+  /** 슬라이드의 사이즈 */
   let slideSize;
-  // 캐러셀의 현재 위치
+  /** 캐러셀의 현재 위치 */
   let now = 2;
-  // 캐러셀의 스피드
+  /** 캐러셀의 스피드 */
   let speed = 350;
-  // 페이지네이션 공식
-  const page = (now) => ((now + 2) % slideList.length) + 1;
+  /** 슬라이드 위치 구하는 공식(중간정렬) */
+  const location = () => slideSize * now - (winSize - slideSize) / 2;
+  /** 시스템상 페이지 구하는 공식 */
+  const systemIdx = (now) => (now + 2) % slideList.length;
+  /** 표시되는 페이지 구하는 공식 */
+  const clientIdx = (now) => ((now + 2) % slideList.length) + 1;
 
-  // 캐러셀 초기화 함수
+  /** 캐러셀 초기화 함수 */
   const carouselInitialize = () => {
     // 화면 크기의 변화를 감지하여 캐러셀 사이즈 및 위치 재설정
     slideSize = slideList[0].clientWidth;
@@ -34,6 +38,7 @@ export const carousel = () => {
   let firstChild = wrapper.firstElementChild;
   let lastChild = wrapper.lastElementChild;
   let clonedFirst = firstChild.cloneNode(true);
+  clonedFirst.classList.add("disabled");
   let clonedSecond = wrapper.children[1].cloneNode(true);
   let clonedThird = wrapper.children[2].cloneNode(true);
   let clonedLast = lastChild.cloneNode(true);
@@ -42,24 +47,25 @@ export const carousel = () => {
   wrapper.insertBefore(clonedLast, firstChild);
   wrapper.insertBefore(clonedThird, clonedLast);
 
-  // 이전 다음 버튼 선택
+  // 이전 다음 버튼 선택자
   const btnPrev = document.querySelector("#btnPrev");
   const btnNext = document.querySelector("#btnNext");
 
-  // 슬라이드 위치 구하기(중간정렬)
-  const location = () => slideSize * now - (winSize - slideSize) / 2;
-
-  /** 캐러셀을 돌려요 */
+  /** 캐러셀을 돌려요
+   *
+   * action : 전진 혹은 후퇴
+   * speed : 속도
+   */
   const carouselSlide = (action, speed) => {
-    // 현재 슬라이드
-    const currentSlide = page(now);
-    // 이전 슬라이드의 인덱스
-    const previousIndex = action ? page(now - 1) - 1 : page(now + 1) - 1;
-    // 이전 슬라이드의 selected 클래스 삭제
-    slideList[previousIndex].classList.remove("selected");
+    // 현재 슬라이드의 표면 인덱스
+    const currentClientIdx = clientIdx(now);
+    // 이전 슬라이드의 시스템 인덱스
+    const previousSystemIdx = action ? systemIdx(now - 1) : systemIdx(now + 1);
+    // 이전 슬라이드의 selected, disabled 클래스 삭제
+    slideList[previousSystemIdx].classList.remove("selected", "disabled");
 
-    // 페이지네이션
-    pagination.innerText = currentSlide;
+    // 표면 인덱스 표시
+    pagination.innerText = currentClientIdx;
     // 슬라이드
     wrapper.style.transition = `${speed}ms`;
     wrapper.style.transform = `translateX(-${location()}px)`;
@@ -75,12 +81,14 @@ export const carousel = () => {
         wrapper.style.transform = `translateX(-${location()}px)`;
       }
       targetBtn.classList.remove("disabled");
-      slideList[currentSlide - 1].classList.add("selected");
+      slideList[currentClientIdx - 1].classList.add("selected");
     }, speed);
   };
 
   /** 이전 버튼 클릭 */
   btnPrev.addEventListener("click", () => {
+    // 작동중 클릭 제어 -> 해제는 carouselSlide에서
+    slideList[systemIdx(now)].classList.add("disabled");
     now--;
     carouselSlide(false, speed);
   });
@@ -88,6 +96,8 @@ export const carousel = () => {
   /** 다음 버튼 클릭 */
   btnNext.addEventListener("click", () => {
     now++;
+    // 작동중 클릭 제어 -> 해제는 carouselSlide에서
+    slideList[systemIdx(now)].classList.add("disabled");
     carouselSlide(true, speed);
   });
 
@@ -98,10 +108,15 @@ export const carousel = () => {
     start = 0;
     moveX = 0;
   };
-  // 터치 및 드래그 제어
+
+  /** 움직임 제어 */
   const onMove = (e) => {
     // 터치시 화면이 덜덜 떨려요
     e.preventDefault();
+
+    // 작동중 클릭 제어 -> 해제는 carouselSlide에서
+    slideList[systemIdx(now)].classList.add("disabled");
+
     // mouse : touch
     const clientX = e.clientX ?? e.touches[0].clientX;
     // 터치일 경우 약간의 감도 조절
@@ -111,32 +126,36 @@ export const carousel = () => {
     wrapper.style.transform = `translateX(-${location() - moveX}px)`;
   };
 
-  // 마우스
-  wrapper.onmousedown = (e) => {
+  /** 마우스 이벤트 */
+  const mouseDown = (e) => {
     start = e.clientX;
     wrapper.addEventListener("mousemove", onMove);
-    document.onmouseup = (e) => {
-      wrapper.removeEventListener("mousemove", onMove);
-      document.onmouseup = null;
-
-      // 버튼 클릭 핸들링
-      if (!moveX) return;
-
-      let moveAction;
-      if (moveX < -slideSize / 5) {
-        moveAction = true;
-        now++;
-      } else if (moveX > slideSize / 5) {
-        moveAction = false;
-        now--;
-      }
-      carouselSlide(moveAction, speed + 100);
-      // 초기화
-      swipeInit();
-    };
+    document.onmouseup = mouseUp;
   };
 
-  // 터치
+  const mouseUp = (e) => {
+    wrapper.removeEventListener("mousemove", onMove);
+
+    // 버튼 클릭 핸들링
+    if (!moveX) return;
+
+    let moveAction;
+    if (moveX < -slideSize / 5) {
+      moveAction = true;
+      now++;
+    } else if (moveX > slideSize / 5) {
+      moveAction = false;
+      now--;
+    }
+    carouselSlide(moveAction, speed + 100);
+    // 초기화
+    swipeInit();
+  };
+
+  // 드래그 이벤트 리스너
+  wrapper.addEventListener("mousedown", mouseDown);
+
+  /** 터치 이벤트 */
   const touchStart = (e) => {
     start = e.touches[0].clientX;
   };
@@ -157,13 +176,8 @@ export const carousel = () => {
     swipeInit();
   };
 
+  // 터치 이벤트 리스너
   wrapper.addEventListener("touchstart", touchStart);
   wrapper.addEventListener("touchmove", onMove);
   document.addEventListener("touchend", touchEnd);
-
-  slideList[0].querySelector(".slide-content").addEventListener("click", (e) => {
-    e.stopPropagation();
-    console.log("child click");
-    window.location.href = "/articles/cover-letter";
-  });
 };
