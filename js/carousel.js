@@ -16,7 +16,7 @@ export const carousel = () => {
   // 캐러셀의 현재 위치
   let now = 2;
   // 캐러셀의 스피드
-  let speed = 300;
+  let speed = 350;
   // 페이지네이션 공식
   const page = (now) => ((now + 2) % slideList.length) + 1;
 
