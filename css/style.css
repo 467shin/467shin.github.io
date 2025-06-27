@@ -17,7 +17,7 @@ a {
   text-decoration: none;
 }
 
-img {
+.slide-content {
   pointer-events: none;
 }
 
@@ -95,7 +95,7 @@ main .autoBtnGroup li:hover {
   perspective: 100px;
 }
 
-.container .slide img {
+.container .slide .slide-content {
   width: 90%;
   height: 100%;
   display: block;
@@ -105,37 +105,51 @@ main .autoBtnGroup li:hover {
   transition: 170ms;
 }
 
+.container .slide .slide-content canvas {
+  opacity: 0;
+  /* width: 100% !important;
+  height: 100% !important; */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 250ms;
+}
+
 /* 선택 효과 설정 */
 .select-effect {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate3D(-50%, -50%, 1vh);
+  transform: translate(-50%, -50%);
   opacity: 0;
   background-color: #fff;
 }
-.selected .select-effect {
-  animation: select-animation 300ms ease 250ms 2;
-}
 .selected {
   z-index: 1;
-  img {
+  .slide-content {
     opacity: 1 !important;
-    filter: drop-shadow(0 0px 50px rgb(255, 255, 255, 0.8));
-    transform: translateZ(1.7vh);
+    filter: drop-shadow(0 0 100px rgb(255, 255, 255, 0.8));
+    /* transform: translateZ(1.7vh); */
+  }
+  .select-effect {
+    animation: select-animation 300ms ease 100ms 2;
+  }
+  canvas {
+    opacity: 1 !important;
   }
 }
 @keyframes select-animation {
   0% {
     opacity: 0;
-    transform: translate3D(-50%, -50%, 1.7vh);
+    transform: translate(-50%, -50%) scale(1);
   }
   1% {
     opacity: 0.7;
   }
   100% {
     opacity: 0;
-    transform: translate3D(-50%, -50%, 1.7vh) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.1);
   }
 }
 

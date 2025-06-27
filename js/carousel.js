@@ -1,3 +1,4 @@
+/** 캐러셀 */
 export const carousel = () => {
   // 캐러셀 컨테이너 선택자
   const container = document.querySelector(".container");
@@ -27,11 +28,11 @@ export const carousel = () => {
 
     // 이펙트 크기를 재설정
     slideList.forEach((slide) => {
-      const img = slide.querySelector("img");
+      const content = slide.querySelector(".slide-content");
       const effect = slide.querySelector(".select-effect");
 
-      effect.style.width = `${img.width}px`;
-      effect.style.height = `${(img.width * img.naturalHeight) / img.naturalWidth}px`;
+      effect.style.width = `${content.width}px`;
+      effect.style.height = `${(content.width * content.naturalHeight) / content.naturalWidth}px`;
     });
     carouselSlide("init", 0);
   };

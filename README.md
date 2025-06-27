@@ -102,3 +102,5 @@ CSS를 잘 다루는 프론트엔드 개발자가 진짜 명품 개발자이다.
 - [무한 루프 캐러셀 - [JS/Slider] 바닐라 자바스크립트로 무한 루프 슬라이드(Carousel) 구현하기](https://im-developer.tistory.com/97)
 - [드래그로 스와이핑 - carousel slider 만들기 (with js)](https://mong-blog.tistory.com/entry/carousel-slider-%EB%A7%8C%EB%93%A4%EA%B8%B0-with-js)
 - [터치 슬라이드 - JS 터치 슬라이드 캐러셀을 만들어보자](https://velog.io/@mododa17/JS-%ED%84%B0%EC%B9%98-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C-%EC%BA%90%EB%9F%AC%EC%85%80%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EC%9E%90-070jx6y2)
+- [3D 렌더링 - [JavaScript] Three.js로 쉽게 만드는 우주 !](https://jungin.tistory.com/1)
+- [지구 모델 렌더링 - [Github] 3D Earth Model](https://github.com/k99sharma/earth-model/blob/main/src/World/components/Earth.js)
