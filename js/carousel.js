@@ -87,8 +87,6 @@ export const carousel = () => {
 
   /** 이전 버튼 클릭 */
   btnPrev.addEventListener("click", () => {
-    // 작동중 클릭 제어 -> 해제는 carouselSlide에서
-    slideList[systemIdx(now)].classList.add("disabled");
     now--;
     carouselSlide(false, speed);
   });
@@ -96,15 +94,16 @@ export const carousel = () => {
   /** 다음 버튼 클릭 */
   btnNext.addEventListener("click", () => {
     now++;
-    // 작동중 클릭 제어 -> 해제는 carouselSlide에서
-    slideList[systemIdx(now)].classList.add("disabled");
     carouselSlide(true, speed);
   });
 
-  /** 스와이프 기능 */
+  /** 스와이핑 기능 */
   let start;
   let moveX;
+
+  /** 스와이프 초기화 */
   const swipeInit = () => {
+    slideList[systemIdx(now)].classList.remove("disabled");
     start = 0;
     moveX = 0;
   };
