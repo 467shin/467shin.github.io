@@ -103,7 +103,7 @@ export const carousel = () => {
     // 터치시 화면이 덜덜 떨려요
     e.preventDefault();
     // mouse : touch
-    const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
+    const clientX = e.clientX ?? e.touches[0].clientX;
     // 터치일 경우 약간의 감도 조절
     moveX = e.clientX ? clientX - start : ((clientX - start) / 5) * 3;
     // 터치 이벤트에 transition을 주어도 덜덜 떨려요
@@ -160,4 +160,10 @@ export const carousel = () => {
   wrapper.addEventListener("touchstart", touchStart);
   wrapper.addEventListener("touchmove", onMove);
   document.addEventListener("touchend", touchEnd);
+
+  slideList[0].querySelector(".slide-content").addEventListener("click", (e) => {
+    e.stopPropagation();
+    console.log("child click");
+    window.location.href = "/articles/cover-letter";
+  });
 };

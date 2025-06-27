@@ -26,29 +26,27 @@
     <main>
       <h1>전자여우굴</h1>
       <h2 id="pagination"><span></span>/4</h2>
-      <ul class="autoBtnGroup">
-        <li class="btnStart">
-          <i class="fas fa-play"></i>
-        </li>
-        <li class="btnPause">
-          <i class="fas fa-pause"></i>
-        </li>
-      </ul>
 
       <!-- Carousel -->
       <div class="container">
         <div class="wrapper" onselectstart="return false">
-          <div class="slide" onClick="location.href='/articles/cover-letter'">
-            <img class="slide-content" src="static/card.png" alt="" />
+          <div class="slide">
+            <div class="slide-content">
+              <img src="static/card.png" alt="card" />
+            </div>
           </div>
           <div class="slide">
             <div class="slide-content" id="earth-slide"></div>
           </div>
           <div class="slide">
-            <img class="slide-content" src="static/pic3.jpeg" alt="" />
+            <div class="slide-content">
+              <img src="static/pic3.jpeg" alt="journal" />
+            </div>
           </div>
           <div class="slide">
-            <img class="slide-content" src="static/pic4.jpeg" alt="" />
+            <div class="slide-content">
+              <img src="static/pic4.jpeg" alt="asset-portfolio" />
+            </div>
           </div>
         </div>
         <i id="btnPrev" class="fas fa-caret-left"></i>

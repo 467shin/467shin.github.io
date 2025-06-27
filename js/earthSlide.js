@@ -92,8 +92,8 @@ const earthSlide = () => {
   camera.position.z = 5;
 
   const controls = new OrbitControls(camera, renderer.domElement);
-  controls.minDistance = 1;
-  controls.maxDistance = 500;
+  // 드래그 불허
+  controls.enableRotate = false;
 
   /** 회전 애니메이션 */
   const animate = function () {
