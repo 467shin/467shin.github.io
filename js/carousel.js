@@ -25,15 +25,6 @@ export const carousel = () => {
     // 화면 크기의 변화를 감지하여 캐러셀 사이즈 및 위치 재설정
     slideSize = slideList[0].clientWidth;
     winSize = container.clientWidth;
-
-    // 이펙트 크기를 재설정
-    slideList.forEach((slide) => {
-      const content = slide.querySelector(".slide-content");
-      const effect = slide.querySelector(".select-effect");
-
-      effect.style.width = `${content.width}px`;
-      effect.style.height = `${(content.width * content.naturalHeight) / content.naturalWidth}px`;
-    });
     carouselSlide("init", 0);
   };
   window.addEventListener("resize", carouselInitialize);
