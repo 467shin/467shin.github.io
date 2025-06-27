@@ -7,7 +7,7 @@ const textureLoader = new THREE.TextureLoader();
 const createClouds = () => {
   const canvasCloud = textureLoader.load(`../static/textures/earth_clouds.png`);
 
-  const geometry = new THREE.SphereGeometry(1.51, 32, 32);
+  const geometry = new THREE.SphereGeometry(1.01, 32, 32);
   const material = new THREE.MeshPhongMaterial({
     map: canvasCloud,
     transparent: true,
@@ -42,7 +42,7 @@ const createMaterial = () => {
 
 /** 지구 생성 */
 const createEarth = () => {
-  const geometry = new THREE.SphereGeometry(1.5, 32, 32);
+  const geometry = new THREE.SphereGeometry(1, 32, 32);
 
   const cloudMesh = createClouds();
 
@@ -77,7 +77,7 @@ const earthSlide = () => {
 
   // 렌더러 정의
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(window.innerWidth * 1.3, window.innerHeight * 1.3);
   document.querySelector("#earth-slide").appendChild(renderer.domElement);
   // 지구 생성
   const earth = createEarth();
