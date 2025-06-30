@@ -17,10 +17,11 @@
     gap: 0;
     flex-direction: column;
     .text-area {
-      max-width: 90%;
+      width: 90%;
     }
     img {
       max-width: 90%;
+      max-height: 45%;
     }
   }
 }
