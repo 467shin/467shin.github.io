@@ -7,22 +7,22 @@ export const carousel = () => {
   // 캐러셀 슬라이드 리스트 선택자
   const slideList = document.querySelectorAll(".slide");
   // 캐러셀 페이지 선택자
-  const pagination = document.querySelector("#pagination span");
+  const pagination = document.querySelector(".pagination span");
 
   /** 화면너비 */
   let winSize;
   /** 슬라이드의 사이즈 */
   let slideSize;
   /** 캐러셀의 현재 위치 */
-  let now = 2;
+  let now = 1;
   /** 캐러셀의 스피드 */
   let speed = 350;
   /** 슬라이드 위치 구하는 공식(중간정렬) */
   const location = () => slideSize * now - (winSize - slideSize) / 2;
-  /** 시스템상 페이지 구하는 공식 */
-  const systemIdx = (now) => (now + 2) % slideList.length;
+  /** 시스템 인덱스 구하는 공식 */
+  const systemIdx = (now) => (now + 3) % slideList.length;
   /** 표시되는 페이지 구하는 공식 */
-  const clientIdx = (now) => ((now + 2) % slideList.length) + 1;
+  const page = (now) => systemIdx(now) + 1;
 
   /** 캐러셀 초기화 함수 */
   const carouselInitialize = () => {
@@ -38,14 +38,12 @@ export const carousel = () => {
   let firstChild = wrapper.firstElementChild;
   let lastChild = wrapper.lastElementChild;
   let clonedFirst = firstChild.cloneNode(true);
-  clonedFirst.classList.add("disabled");
-  let clonedSecond = wrapper.children[1].cloneNode(true);
-  let clonedThird = wrapper.children[2].cloneNode(true);
   let clonedLast = lastChild.cloneNode(true);
+  clonedFirst.classList.add("disabled");
+  clonedLast.classList.add("disabled");
 
-  wrapper.append(clonedFirst, clonedSecond);
+  wrapper.append(clonedFirst);
   wrapper.insertBefore(clonedLast, firstChild);
-  wrapper.insertBefore(clonedThird, clonedLast);
 
   // 이전 다음 버튼 선택자
   const btnPrev = document.querySelector("#btnPrev");
@@ -53,19 +51,19 @@ export const carousel = () => {
 
   /** 캐러셀을 돌려요
    *
-   * action : 전진 혹은 후퇴
+   * action : 전진 혹은 후퇴 |
    * speed : 속도
    */
   const carouselSlide = (action, speed) => {
-    // 현재 슬라이드의 표면 인덱스
-    const currentClientIdx = clientIdx(now);
-    // 이전 슬라이드의 시스템 인덱스
+    // 현재 슬라이드의 페이지
+    const currentPage = page(now);
+    // 이전 슬라이드의 인덱스
     const previousSystemIdx = action ? systemIdx(now - 1) : systemIdx(now + 1);
-    // 이전 슬라이드의 selected, disabled 클래스 삭제
-    slideList[previousSystemIdx].classList.remove("selected", "disabled");
+    // 이전 슬라이드의 selected 클래스 삭제
+    slideList[previousSystemIdx].classList.remove("selected");
 
     // 표면 인덱스 표시
-    pagination.innerText = currentClientIdx;
+    pagination.innerText = currentPage;
     // 슬라이드
     wrapper.style.transition = `${speed}ms`;
     wrapper.style.transform = `translateX(-${location()}px)`;
@@ -74,14 +72,15 @@ export const carousel = () => {
     targetBtn.classList.add("disabled");
     setTimeout(() => {
       // 루프 제어
-      if (now === 1 || now > slideList.length + 1) {
+      if (now === 0 || now > slideList.length) {
         // 캐러셀 위치 초기화
-        now = action ? 2 : slideList.length + 1;
+        now = action ? 1 : slideList.length;
         wrapper.style.transition = `0ms`;
         wrapper.style.transform = `translateX(-${location()}px)`;
       }
       targetBtn.classList.remove("disabled");
-      slideList[currentClientIdx - 1].classList.add("selected");
+      slideList[systemIdx(now)].classList.remove("disabled");
+      slideList[systemIdx(now)].classList.add("selected");
     }, speed);
   };
 

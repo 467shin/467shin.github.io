@@ -6,7 +6,6 @@
   margin: 0px;
   padding: 0px;
   font-family: "Orbit";
-  color: black;
   -ms-touch-action: manipulation; /* IE10  */
   touch-action: manipulation; /* IE11+ */
 }
@@ -17,6 +16,24 @@ li {
 }
 a {
   text-decoration: none;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 1rem;
+  opacity: 0.8;
 }
 
 img {
@@ -36,25 +53,18 @@ main {
   background-color: white;
 }
 
-main h1 {
-  font-weight: normal;
-  font-size: 2rem;
-  opacity: 0.8;
+main .title {
   position: absolute;
   margin: 3vh 3%;
 }
 
-main h2 {
-  font-weight: normal;
-  font-size: 1rem;
-  opacity: 0.8;
+.pagination {
   position: absolute;
   right: 5%;
   margin: 5vh 0;
-}
-
-#pagination span {
-  font-size: 1.5rem;
+  span {
+    font-size: 1.5rem;
+  }
 }
 
 /* 캐러셀 */
@@ -74,6 +84,7 @@ main h2 {
   width: 100vw;
   height: 100%;
   float: left;
+  pointer-events: none;
   /* perspective: 100px; */
 }
 
@@ -96,6 +107,7 @@ main h2 {
 
 /* 선택 효과 설정 */
 .selected {
+  pointer-events: auto !important;
   .slide-content {
     z-index: 1;
     filter: brightness(1) !important;
@@ -121,7 +133,7 @@ main h2 {
 }
 
 .disabled {
-  pointer-events: none;
+  pointer-events: none !important;
 }
 
 #btnPrev {
@@ -134,4 +146,32 @@ main h2 {
   top: 50%;
   right: 3%;
   transform: translate(0, -50%);
+}
+
+/* 슬라이드 하나하나 */
+#portfolio-slide {
+  padding: 3%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  img {
+    width: 50%;
+  }
+}
+
+.portfolio-text-area {
+  width: 50%;
+  h1 {
+    font-size: 2.5rem;
+    color: white;
+  }
+  h2 {
+    font-size: 1.5rem;
+    color: white;
+  }
+  h3 {
+    font-size: 1.2rem;
+    color: white;
+  }
 }
