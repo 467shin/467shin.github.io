@@ -114,6 +114,7 @@ CSS를 잘 다루는 프론트엔드 개발자가 진짜 명품 개발자이다.
 - [터치 슬라이드 - JS 터치 슬라이드 캐러셀을 만들어보자](https://velog.io/@mododa17/JS-%ED%84%B0%EC%B9%98-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C-%EC%BA%90%EB%9F%AC%EC%85%80%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EC%9E%90-070jx6y2)
 - [3D 렌더링 - [JavaScript] Three.js로 쉽게 만드는 우주 !](https://jungin.tistory.com/1)
 - [지구 모델 렌더링 - [Github] 3D Earth Model](https://github.com/k99sharma/earth-model/blob/main/src/World/components/Earth.js)
+- [로딩 컴포넌트 - [JavaScript] 로딩페이지 만들기](https://zthcoding.tistory.com/entry/Javascript-%EB%A1%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 
 ## 6. 고난과 역경
 

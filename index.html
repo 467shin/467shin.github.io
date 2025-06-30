@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
     <title>전자여우굴</title>
     <link rel="shortcut icon" href="./static/sd.png" type="image/x-icon" />
     <!-- ▼ 사이트 설명 -->
@@ -24,14 +24,28 @@
   </head>
   <body>
     <main>
-      <h1>전자여우굴</h1>
-      <h2 id="pagination"><span></span>/4</h2>
+      <h1 class="title">전자여우굴</h1>
+      <h3 class="pagination"><span></span>/4</h3>
+
+      <div class="loading">
+        <img src="static/loading.gif" alt="" />
+        <h1>Loading...</h1>
+      </div>
 
       <!-- Carousel -->
       <div class="container">
         <div class="wrapper" onselectstart="return false">
           <div class="slide">
             <div class="slide-content" onclick="location.href='/portfolio'">
+              <div class="text-area">
+                <h2>보기 드문 진짜 올라운더 개발자</h2>
+                <h1>
+                  저의 포트폴리오를 <br />
+                  구경하세요!
+                </h1>
+                <h3>그리고 저를 채용하세요</h3>
+                <button>바로가기</button>
+              </div>
               <img src="static/card.png" alt="card" />
             </div>
           </div>

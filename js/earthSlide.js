@@ -75,11 +75,11 @@ const earthSlide = () => {
   // 장면 설정
   const scene = new THREE.Scene();
   // 카메라 생성
-  const camera = new THREE.PerspectiveCamera(75, slide.clientWidth / slide.clientHeight, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(75, ((slide.clientWidth / 7) * 6) / slide.clientHeight, 0.1, 1000);
 
   // 렌더러 정의
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(slide.clientWidth, slide.clientHeight);
+  renderer.setSize((slide.clientWidth / 7) * 6, slide.clientHeight);
   document.querySelector("#earth-slide").appendChild(renderer.domElement);
   // 지구 생성
   const earth = createEarth();

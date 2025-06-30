@@ -4,3 +4,8 @@ import { earthSlide } from "./earthSlide.js";
 
 carousel();
 earthSlide();
+
+// 로딩
+window.onload = () => {
+  document.querySelector(".loading").style.visibility = "hidden";
+};
