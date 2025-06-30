@@ -19,9 +19,7 @@
 
 ### 선정 이유
 
-```
-SSAFY에서 진행된 3번의 팀 프로젝트 모두 Front-end 팀원으로 참여하였지만, 줄곧 React만 사용해왔기 때문에 Vanilla JavaScript의 사용경험이 부족하다고 판단되어 JavaScript의 이해도를 높여보고자 선정했어요.
-```
+> SSAFY에서 진행된 3번의 팀 프로젝트 모두 Front-end 팀원으로 참여하였지만, 줄곧 React만 사용해왔기 때문에 Vanilla JavaScript의 사용경험이 부족하다고 판단되어 JavaScript의 이해도를 높여보고자 선정했어요.
 
 ## 3. 내용
 
@@ -115,6 +113,9 @@ CSS를 잘 다루는 프론트엔드 개발자가 진짜 명품 개발자이다.
 - [3D 렌더링 - [JavaScript] Three.js로 쉽게 만드는 우주 !](https://jungin.tistory.com/1)
 - [지구 모델 렌더링 - [Github] 3D Earth Model](https://github.com/k99sharma/earth-model/blob/main/src/World/components/Earth.js)
 - [로딩 컴포넌트 - [JavaScript] 로딩페이지 만들기](https://zthcoding.tistory.com/entry/Javascript-%EB%A1%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A7%8C%EB%93%A4%EA%B8%B0)
+- [로딩 컴포넌트 애니메이션 아이콘 - Freepik - Flaticon](https://www.flaticon.com/kr/free-animated-icons/)
+- [반응형 - CSS 반응형 미디어쿼리 디바이스별 해상도 분기점](https://velog.io/@yunazzi/device-media-query)
+- [반응형 - 웹페이지 가로 모드/세로 모드 인식하기](https://studiomeal.com/archives/1068)
 
 ## 6. 고난과 역경
 

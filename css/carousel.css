@@ -1,0 +1,102 @@
+/* 캐러셀 */
+
+.container {
+  width: 100vw;
+  height: 70%;
+  position: relative;
+  top: 15%;
+}
+
+.wrapper {
+  width: 600vw;
+  height: 100%;
+}
+
+.container .slide {
+  width: 100vw;
+  height: 100%;
+  float: left;
+  pointer-events: none;
+  /* perspective: 100px; */
+}
+
+.container .slide .slide-content {
+  width: 80%;
+  height: 100%;
+  padding: 0 3%;
+  margin: 0 auto;
+  background-color: black;
+  border-radius: 15px;
+  box-sizing: border-box;
+  filter: brightness(0.7);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2%;
+  transition: 170ms;
+}
+
+.container .slide .slide-content .text-area {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 1rem;
+}
+
+.container .slide .slide-content canvas {
+  opacity: 0;
+  transition: 250ms;
+  border-radius: 15px;
+  pointer-events: none;
+}
+
+/* 선택 효과 설정 */
+.selected {
+  pointer-events: auto !important;
+  .slide-content {
+    z-index: 1;
+    filter: brightness(1) !important;
+    /* transform: translateZ(1.7vh); */
+  }
+  canvas {
+    opacity: 1 !important;
+  }
+}
+
+.container i {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0.8;
+  font-size: 2rem;
+  margin: 1%;
+  transition: all, 0.3s;
+}
+
+.container i:hover {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+.disabled {
+  pointer-events: none !important;
+}
+
+#btnPrev {
+  top: 50%;
+  left: 3%;
+  transform: translate(0, -50%);
+}
+
+#btnNext {
+  top: 50%;
+  right: 3%;
+  transform: translate(0, -50%);
+}
+
+/* 슬라이드 하나하나 */
+
+#earth-slide {
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
