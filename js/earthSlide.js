@@ -68,8 +68,8 @@ const createLight = () => {
   return { mainLight, ambientLight };
 };
 
-// 실행 함수
-const earthSlide = () => {
+/** 천지창조 */
+const theCreation = () => {
   // 사이즈 기준
   const slide = document.querySelector(".slide-content");
   // 장면 설정
@@ -81,6 +81,7 @@ const earthSlide = () => {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize((slide.clientWidth / 7) * 6, slide.clientHeight);
   document.querySelector("#earth-slide").appendChild(renderer.domElement);
+
   // 지구 생성
   const earth = createEarth();
   scene.add(earth);
@@ -105,4 +106,4 @@ const earthSlide = () => {
   animate();
 };
 
-export { earthSlide };
+export { theCreation };

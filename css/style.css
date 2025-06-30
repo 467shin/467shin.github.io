@@ -194,6 +194,10 @@ main .title {
   transform: translate(0, -50%);
 }
 
+#earth-slide {
+  overflow: hidden;
+}
+
 /* 반응형 */
 
 @media (max-width: 1024px) {
