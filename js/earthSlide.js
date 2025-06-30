@@ -106,4 +106,14 @@ const theCreation = () => {
   animate();
 };
 
+// 나중을 위한 코드 백업
+// const earthSlide = () => {
+//   window.addEventListener("load", theCreation);
+//   리사이즈;
+//   window.addEventListener("resize", () => {
+//     document.querySelector("#earth-slide").firstChild.remove();
+//     theCreation();
+//   });
+// };
+
 export { theCreation };

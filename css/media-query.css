@@ -1,0 +1,54 @@
+/* 반응형 */
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  button {
+    display: none;
+  }
+  .slide-content {
+    gap: 0;
+    flex-direction: column;
+    .text-area {
+      max-width: 90%;
+    }
+    img {
+      max-width: 90%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+  h2 {
+    font-size: 0.9rem;
+  }
+  h3 {
+    font-size: 0.8rem;
+  }
+}
+
+/* 가로모드 */
+@media (orientation: landscape) {
+  button {
+    display: inline-block;
+  }
+  .slide-content {
+    flex-direction: row;
+    .text-area {
+      max-width: 45%;
+    }
+    img {
+      max-width: 55%;
+    }
+  }
+}
