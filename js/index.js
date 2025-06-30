@@ -7,5 +7,7 @@ theCreation();
 
 // 로딩
 window.onload = () => {
-  document.querySelector(".loading").style.visibility = "hidden";
+  setTimeout(() => {
+    document.querySelector(".loading").style.visibility = "hidden";
+  }, 500);
 };
