@@ -1,7 +1,5 @@
 @charset "urf-8";
 @import url("https://fonts.googleapis.com/css2?family=Orbit&display=swap");
-@import "./media-query.css";
-@import "./carousel.css";
 
 /* 화면 초기화 */
 * {
