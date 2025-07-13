@@ -40,9 +40,6 @@ const carouselSlide = (action, speed) => {
   const previousSystemIdx = action ? systemIdx(now - 1) : systemIdx(now + 1);
   // 이전 슬라이드의 selected 클래스 삭제
   slideList[previousSystemIdx].classList.remove("selected");
-  console.log(previousSystemIdx);
-  console.log(location());
-  console.log(now);
 
   // 표면 인덱스 표시
   pagination.innerText = currentPage;
